@@ -1,0 +1,41 @@
+.app, .advert {
+  position: relative;
+  height: 200px;
+  width: 35vw;
+  margin: 0 auto;
+  border: 1em solid black;
+  border-width: 0.5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.image img{
+  height: 150px;
+  width: auto;
+  float: left;
+}
+
+.button{
+  float: right;
+}
+
+.text{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
+}
+
+.logo {
+  animation: App-logo-spin infinite 2s linear;
+  height: 80px;
+  padding-top: 80px;
+  margin: auto;
+}
+
+@keyframes App-logo-spin { 
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
