@@ -46,17 +46,14 @@ const InjectedText = props => {
 }
 
 class Checkbox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isChecked: props.isChecked,
-    }
-}
+  state = {
+    isChecked: false,
+  }
 
   toggleCheckboxChange = () => {
     const {
       handleCheckboxChange, 
-      label,
+      label
     } = this.props;
   
     this.setState(({ isChecked }) => (
@@ -68,8 +65,17 @@ class Checkbox extends Component {
     handleCheckboxChange(label);
   }
 
+  toggleStyleChange = () => {
+    const {
+      handleStyleChange, 
+      style
+    } = this.props;
+    handleStyleChange(style);
+  }
+
   render() {
-    const {label} = this.props;
+    const {label, style} = this.props;
+    const {isChecked} = this.state;
 
     return (
       <div className="checkbox">
@@ -77,9 +83,11 @@ class Checkbox extends Component {
           <input
             type="checkbox"
             value={label}
-            checked={this.state.isChecked}
-            onChange={this.toggleCheckboxChange.bind(this)}
+            checked={isChecked}
+            onChange={this.toggleCheckboxChange}
+            style={style}
           />
+
           {label}
         </label>
       </div>
@@ -141,57 +149,41 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classNames: [],
-      isChecked: false
+      classNames: new Set([styles.app])
     }
-    this.selectedCheckboxes = new Set();
+    
   }
   
   
   toggleCheckbox = checkbox => {
+    var listClassNames = this.state.classNames;
+
+    this.selectedCheckboxes.has(checkbox) ? 
+      this.selectedCheckboxes.delete(checkbox) : 
+      this.selectedCheckboxes.add(checkbox)
     
-      let checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
-      if(checkedBoxes.length > 2){
-        alert('You can only select 2 at the time');
-      }
-
-      // if (this.selectedCheckboxes.size === 1){
-      //   this.setState(prevState => ({
-      //     classNames: prevState.classNames.add(styles.border)
-      //   }));
-      // } else if (this.selectedCheckboxes.size === 2){
-      //   this.setState(prevState => ({
-      //     classNames: prevState.classNames.add(styles.backgroundBorder)
-      //   }));
-      // }   
-
-      switch (checkedBoxes.length) {
-        case 1:
-        this.setState(prevState => ({
-          classNames: [styles.border]
-        }));
-        break;
-        case 2:
-        this.setState(prevState => ({
-          classNames: [styles.border, styles.backgroundBorder]
-        }));
-        break;
-        default:
-        this.setState(prevState => ({
-          classNames: []
-        }));
-          break;
-      }
-
-      
-    }
+      if (this.selectedCheckboxes.size === 1){
+        listClassNames.add(styles.border);
+        this.setState({
+          classNames: listClassNames
+        })
+      } else if (this.selectedCheckboxes.size === 2){
+      listClassNames.add(styles.backgroundBorder);
+        this.setState({
+          classNames: listClassNames
+        })
+      }   
+      var styles = listClassNames;
+      this.styles.has(listClassNames) ? 
+      this.styles.delete(listClassNames) : 
+      this.styles.add(listClassNames)
+  }
 
   createCheckbox = label => (
     <Checkbox
       label={label}
       handleCheckboxChange={this.toggleCheckbox}
       key={label}
-      isChecked={this.state.isChecked}
     />
   )
 
@@ -209,7 +201,7 @@ class App extends Component {
         {
           Card.list.map(function(i){
             if (i%3) {
-              component = <Card key={i} cardNumber={number} className={[styles.app, ...classNames].join(' ')}/> 
+              component = <Card key={i} cardNumber={number} className={[...classNames].join(' ')}/> 
               number++
             } else {
               component = <Advert key={i}/>

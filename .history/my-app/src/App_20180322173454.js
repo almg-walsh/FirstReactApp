@@ -149,7 +149,9 @@ class App extends Component {
   
   
   toggleCheckbox = checkbox => {
-    
+    this.selectedCheckboxes.has(checkbox) ? 
+      this.selectedCheckboxes.delete(checkbox) : 
+      this.selectedCheckboxes.add(checkbox)
       let checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
       if(checkedBoxes.length > 2){
         alert('You can only select 2 at the time');
@@ -165,6 +167,7 @@ class App extends Component {
       //   }));
       // }   
 
+      let checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
       switch (checkedBoxes.length) {
         case 1:
         this.setState(prevState => ({

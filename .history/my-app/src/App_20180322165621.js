@@ -61,7 +61,7 @@ class Checkbox extends Component {
   
     this.setState(({ isChecked }) => (
       {
-        isChecked: !isChecked,
+        isChecked: true,
       }
     ));
 
@@ -141,7 +141,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classNames: [],
+      classNames: new Set([styles.app]),
       isChecked: false
     }
     this.selectedCheckboxes = new Set();
@@ -149,38 +149,23 @@ class App extends Component {
   
   
   toggleCheckbox = checkbox => {
-    
-      let checkedBoxes = document.querySelectorAll('input[type=checkbox]:checked');
-      if(checkedBoxes.length > 2){
-        alert('You can only select 2 at the time');
-      }
+    this.selectedCheckboxes.has(checkbox) ? 
+      this.selectedCheckboxes.delete(checkbox) : 
+      this.selectedCheckboxes.add(checkbox)
 
-      // if (this.selectedCheckboxes.size === 1){
-      //   this.setState(prevState => ({
-      //     classNames: prevState.classNames.add(styles.border)
-      //   }));
-      // } else if (this.selectedCheckboxes.size === 2){
-      //   this.setState(prevState => ({
-      //     classNames: prevState.classNames.add(styles.backgroundBorder)
-      //   }));
-      // }   
+      if (this.selectedCheckboxes.size === 1){
+        this.setState(prevState => ({
+          classNames: prevState.classNames.add(styles.border)
+        }));
+      } else if (this.selectedCheckboxes.size === 2){
+        this.setState(prevState => ({
+          classNames: prevState.classNames.add(styles.backgroundBorder)
+        }));
+      }   
 
-      switch (checkedBoxes.length) {
-        case 1:
-        this.setState(prevState => ({
-          classNames: [styles.border]
-        }));
-        break;
-        case 2:
-        this.setState(prevState => ({
-          classNames: [styles.border, styles.backgroundBorder]
-        }));
-        break;
-        default:
-        this.setState(prevState => ({
-          classNames: []
-        }));
-          break;
+      if(!this.state.isChecked){
+        
+        this.state.classNames.delete(Array.from(this.state.classNames).pop());
       }
 
       
@@ -209,7 +194,7 @@ class App extends Component {
         {
           Card.list.map(function(i){
             if (i%3) {
-              component = <Card key={i} cardNumber={number} className={[styles.app, ...classNames].join(' ')}/> 
+              component = <Card key={i} cardNumber={number} className={[...classNames].join(' ')}/> 
               number++
             } else {
               component = <Advert key={i}/>
