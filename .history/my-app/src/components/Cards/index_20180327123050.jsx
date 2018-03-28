@@ -1,0 +1,27 @@
+import React, { Component } from "react";
+import Card from "../Card/index";
+
+class Cards extends Component {
+  render() {
+    var labels = [
+      "record",
+      "heat",
+      "experience",
+      "roomy",
+      "jumbled",
+      "legal",
+      "phobic",
+      "weary",
+      "whine",
+      "furry"
+    ];
+
+    for (var i = 0; i < labels.length; i++) {
+        return <Card label={labels[i]} />;
+    }
+
+    
+  }
+}
+
+export default Cards;

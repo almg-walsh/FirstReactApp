@@ -1,19 +1,17 @@
-.app {
-  text-align: center; }
+.app, .advert {
+  position: relative;
+  height: 200px;
+  width: 35vw;
+  margin: 0 auto;
+  border: 1em solid black;
+  border-width: 0.5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 20px; }
 
-.logo {
-  animation: App-logo-spin infinite 2s linear;
-  height: 80px;
-  padding-top: 80px; }
+.border {
+  border-color: red; }
 
-.header {
-  background-color: #3c3c3c;
-  height: 300px;
-  padding: 20px;
-  color: white; }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
+.backgroundBorder {
+  background: skyblue; }
