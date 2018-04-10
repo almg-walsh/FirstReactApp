@@ -31,7 +31,7 @@ class App extends Component {
       });
     }
 
-    if (this.checkboxesChecked === 1) {
+    if (this.checkboxesChecked >= 1) {
       this.setState({
         numberOfCheckboxes: this.checkboxesChecked
       });

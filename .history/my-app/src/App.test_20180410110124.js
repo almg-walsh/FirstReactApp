@@ -27,4 +27,20 @@ describe("handleCheckboxChange -  Number of checkboxes selected", () => {
     checkboxUnselected.simulate("change", { target: { isChecked: false } });
     expect(wrapper.state().numberOfCheckboxes).toEqual(2);
   });
+  if (
+    ("should have 2 checkboxes selected",
+    () => {
+      const wrapper = mount(<App />);
+
+      const checkbox1 = wrapper.find({ value: "One" });
+      const checkbox2 = wrapper.find({ value: "Two" });
+      const checkboxUnselected = wrapper.find({ value: "Two" });
+
+      checkbox1.simulate("change", { target: { isChecked: true } });
+      checkbox2.simulate("change", { target: { isChecked: true } });
+      checkboxUnselected.simulate("change", { target: { isChecked: false } });
+
+      expect(wrapper.state().numberOfCheckboxes).toEqual(1);
+    })
+  );
 });

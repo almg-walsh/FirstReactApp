@@ -10,20 +10,19 @@ describe("handleCheckboxChange -  Number of checkboxes selected", () => {
 
   it("checkbox selected", () => {
     const wrapper = mount(<App />);
-    const checkboxOne = wrapper.find({ value: "One" });
-    const checkboxTwo = wrapper.find({ value: "Two" });
-    const checkboxThree = wrapper.find({ value: "Three" });
-    const checkboxUnselected = wrapper.find({ value: "Two" });
-
-    checkboxOne.simulate("change", { target: { isChecked: true } });
+    const checkbox1 = wrapper.find({ value: "One" });
+    checkbox1.simulate("change", { target: { isChecked: true } });
     expect(wrapper.state().numberOfCheckboxes).toEqual(1);
 
-    checkboxTwo.simulate("change", { target: { isChecked: true } });
+    const checkbox2 = wrapper.find({ value: "Two" });
+    checkbox2.simulate("change", { target: { isChecked: true } });
     expect(wrapper.state().numberOfCheckboxes).toEqual(2);
 
-    checkboxThree.simulate("change", { target: { isChecked: true } });
-    expect(wrapper.state().numberOfCheckboxes).toEqual(2);
+    const checkbox3 = wrapper.find({ value: "Three" });
+    checkbox3.simulate("change", { target: { isChecked: true } });
+    expect(wrapper.state().numberOfCheckboxes).toEqual(3);
 
+    const checkboxUnselected = wrapper.find({ value: "Two" });
     checkboxUnselected.simulate("change", { target: { isChecked: false } });
     expect(wrapper.state().numberOfCheckboxes).toEqual(2);
   });

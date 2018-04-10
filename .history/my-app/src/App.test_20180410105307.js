@@ -22,9 +22,12 @@ describe("handleCheckboxChange -  Number of checkboxes selected", () => {
     expect(wrapper.state().numberOfCheckboxes).toEqual(2);
 
     checkboxThree.simulate("change", { target: { isChecked: true } });
-    expect(wrapper.state().numberOfCheckboxes).toEqual(2);
+    expect(wrapper.state().numberOfCheckboxes).toEqual(3);
 
     checkboxUnselected.simulate("change", { target: { isChecked: false } });
     expect(wrapper.state().numberOfCheckboxes).toEqual(2);
+
+    checkboxUnselected.simulate("change", { target: { isChecked: false } });
+    expect(wrapper.state().numberOfCheckboxes).toEqual(1);
   });
 });
