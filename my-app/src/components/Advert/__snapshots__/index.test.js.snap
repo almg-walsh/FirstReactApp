@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Advert should render correctly 1`] = `
+<Advert>
+  <div>
+    <img
+      alt="logo"
+      src="logo.svg"
+    />
+    <button
+      onClick={[Function]}
+    >
+      X
+    </button>
+  </div>
+</Advert>
+`;

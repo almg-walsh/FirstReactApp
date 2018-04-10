@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should render correctly 1`] = `
+<Card>
+  <div>
+    <Image>
+      <div>
+        <img
+          alt="logo"
+          src="https://avatars0.githubusercontent.com/u/5065156?v=4"
+        />
+      </div>
+    </Image>
+    <Button
+      renderText={[Function]}
+      showTextComponent={false}
+    >
+      <div>
+        <button
+          onClick={[Function]}
+        >
+          Click me
+        </button>
+      </div>
+    </Button>
+    <Text>
+      <div>
+        <p>
+          I am the card 
+        </p>
+      </div>
+    </Text>
+  </div>
+</Card>
+`;

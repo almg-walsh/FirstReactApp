@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Advert should render correctly 1`] = `
+<Checkbox>
+  <div
+    className="checkbox"
+  >
+    <label>
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+    </label>
+  </div>
+</Checkbox>
+`;

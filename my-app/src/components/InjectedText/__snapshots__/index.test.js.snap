@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InjectedText should render correctly 1`] = `
+<InjectedText>
+  <div>
+    <p>
+      I clicked the card number 
+    </p>
+  </div>
+</InjectedText>
+`;

@@ -1,0 +1,33 @@
+import React from "react";
+import { mount } from "enzyme";
+import Cards from "./index";
+import Card from "./index";
+
+describe("Cards", () => {
+  it("should render correctly", () => {
+    const wrapper = mount(<Cards />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it("one checkbox should be checked", () => {
+    const wrapper = mount(<Card checkboxesChecked="1" className="border" />);
+    expect(wrapper.prop("checkboxesChecked")).toEqual("1");
+    expect(wrapper.hasClass("border")).toEqual(true);
+  });
+  it("two checkboxes should be checked", () => {
+    const wrapper = mount(
+      <Card checkboxesChecked="2" className="backgroundBorder" />
+    );
+    expect(wrapper.prop("checkboxesChecked")).toEqual("2");
+    expect(wrapper.hasClass("backgroundBorder")).toEqual(true);
+  });
+  it("three checkboxes should be checked", () => {
+    const wrapper = mount(<Card checkboxesChecked="3" className="" />);
+    expect(wrapper.prop("checkboxesChecked")).toEqual("3");
+    expect(wrapper.hasClass("")).toEqual(true);
+  });
+  it("checkbox should be checked", () => {
+    const wrapper = mount(<Cards isChecked="true" />);
+    expect(wrapper.prop("isChecked")).toEqual("true");
+  });
+});
